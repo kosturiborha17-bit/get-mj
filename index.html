@@ -7,6 +7,15 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Live Update Notification Toast -->
+    <div id="update-toast" class="update-toast hidden">
+        <div class="toast-content">
+            <span class="pulse-dot"></span>
+            <span id="toast-message">MJ v1.0.4 Patch Live: Offline neural weights updated.</span>
+        </div>
+        <button id="close-toast" class="toast-close">&times;</button>
+    </div>
+
     <header>
         <div class="logo-container">
             <svg class="logo-icon" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
@@ -16,88 +25,403 @@
             </svg>
             <span class="logo-text">THE TOXIC <span>AI</span></span>
         </div>
-        <div class="header-badge" id="auth-badge">MJ v1.0.4</div>
+        <div class="header-right">
+            <!-- Simulated Live Date-Time & Weather Widget -->
+            <div id="system-widget" class="system-widget">
+                <span id="live-time">00:00:00</span>
+                <span class="widget-separator">|</span>
+                <span id="live-temp">⛅ Loading System Temp...</span>
+            </div>
+            <div class="header-badge" id="auth-badge">MJ v1.0.4</div>
+        </div>
     </header>
 
-    <!-- Trial Banner (Hidden by default) -->
-    <div id="trial-banner" class="trial-banner hidden">
-        <span>⚡ Trial Active: <strong id="timer-display">15:00</strong> remaining</span>
-        <button id="extend-trial-btn" class="mini-btn">Get Pro</button>
+    <!-- Interactive Active Header Banner -->
+    <div id="trial-banner" class="trial-banner">
+        <span>⚡ Server Status: <strong style="color: var(--accent);">STABLE</strong> | Active Node Sync: <span id="sync-nodes">1,482</span></span>
+        <a href="#purchase" class="mini-btn">Get MJ Now</a>
     </div>
 
     <main>
+        <!-- Hero Section with futuristic glowing layout -->
         <section id="hero">
-            <h1>Upgrade Your Reality with MJ.</h1>
-            <p>Meet MJ — your unfiltered, ultra-fast AI companion built by <strong>THE TOXIC AI</strong>. Experience the 15-minute live sandbox or unlock the full Android APK with a permanent license.</p>
-            <div class="hero-actions">
-                <button class="trial-btn" id="trial-btn">Start 15-Min Trial</button>
-                <button class="buy-btn-hero" id="buy-hero-btn">Buy Pro - $29</button>
-            </div>
-        </section>
-
-        <section id="about">
-            <h2>How MJ Helps You Thrive</h2>
-            <p>You don't need another generic assistant. You need an AI that actually gets things done. Here is how MJ transforms your workflow:</p>
-            <div class="grid">
-                <div class="card">
-                    <h3>Lightning-Fast Brainstorming</h3>
-                    <p>Stuck on an idea? MJ spits out angles, code snippets, and strategies in seconds flat so you stay ahead.</p>
-                </div>
-                <div class="card">
-                    <h3>Total Automation</h3>
-                    <p>Delegate repetitive digital chores. MJ handles summaries, drafts, and data organization while you chill.</p>
-                </div>
-                <div class="card">
-                    <h3>Unfiltered Insights</h3>
-                    <p>No corporate fluff. MJ gives you direct, razor-sharp analysis when you need real answers fast.</p>
-                </div>
-                <div class="card">
-                    <h3>Privacy First Architecture</h3>
-                    <p>Built by THE TOXIC AI with client-side encryption. Your prompts and data remain strictly yours.</p>
+            <div class="glow-sphere pink-glow"></div>
+            <div class="glow-sphere cyan-glow"></div>
+            <div class="hero-content">
+                <div class="cyber-tag">NEXT GEN NEURAL CLIENT</div>
+                <h1>Upgrade Your Reality with MJ.</h1>
+                <p>Meet MJ — your unfiltered, ultra-fast AI companion built by <strong>THE TOXIC AI</strong>. Power your workflow with a beautiful dark-mode sandbox or download the absolute raw power of our offline-ready Android APK today.</p>
+                
+                <div class="hero-actions">
+                    <a href="#features-dashboard" class="btn-primary-neon">Explore MJ Hub</a>
+                    <a href="#purchase" class="btn-secondary-neon">Download APK & License</a>
                 </div>
             </div>
         </section>
 
+        <!-- Mood & State Selection Engine -->
+        <section id="mood-engine" class="card-glass">
+            <h2>System Mood Alignment</h2>
+            <p>Synchronize MJ's neuro-responses to your current cognitive state for custom outputs.</p>
+            <div class="mood-grid">
+                <button class="mood-btn active" data-mood="laser">🎯 Laser Focus</button>
+                <button class="mood-btn" data-mood="creative">🎨 Creative Chaos</button>
+                <button class="mood-btn" data-mood="chill">☕ Calm & Zen</button>
+                <button class="mood-btn" data-mood="toxic">⚡ Brutal Roast</button>
+            </div>
+            <div id="mood-response-box" class="mood-response-box">
+                <p id="mood-text">"Laser Focus Mode activated. Low latency responses. No filler text. Only clean productivity."</p>
+            </div>
+        </section>
+
+        <!-- Main Feature Hub: Multi-tab style, study, journal, whiteboard etc. -->
+        <section id="features-dashboard">
+            <h2>The Multi-Verse Workspace</h2>
+            <p>Access all toolkits right from your device. Toggle between the tabs below to try the live sandbox modules.</p>
+            
+            <div class="tabs-container">
+                <button class="tab-btn active" data-tab="music-journal">🎵 Ambient & Journal</button>
+                <button class="tab-btn" data-tab="chat-market">💬 Chat & Docs</button>
+                <button class="tab-btn" data-tab="whiteboard">✏️ Canvas & Code</button>
+                <button class="tab-btn" data-tab="sync-vault">🔒 Cloud Sync</button>
+            </div>
+
+            <div class="tab-content active" id="tab-music-journal">
+                <div class="features-grid">
+                    <div class="card">
+                        <h3>🎧 Cyberpunk Binaural Beats</h3>
+                        <p>Stream high-fidelity ambient waves directly to power your concentration sessions.</p>
+                        <div class="music-player-sim">
+                            <div class="now-playing">
+                                <div class="equalizer-bar-container">
+                                    <span class="eq-bar bar1"></span>
+                                    <span class="eq-bar bar2"></span>
+                                    <span class="eq-bar bar3"></span>
+                                    <span class="eq-bar bar4"></span>
+                                </div>
+                                <span id="track-name">Track: Off-World Synths 120BPM</span>
+                            </div>
+                            <div class="player-controls">
+                                <button id="play-btn-sim" class="control-btn">▶ Play Synth</button>
+                                <span id="playback-status" style="font-size:0.8rem; color:var(--text-muted);">Stopped</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>📝 Encrypted Self-Journal</h3>
+                        <p>Draft ideas, thoughts or task logs locally. They are stored only in your browser sandbox.</p>
+                        <textarea id="journal-input" placeholder="What's your plan for world domination today?..." rows="4"></textarea>
+                        <div class="card-footer-actions">
+                            <button id="save-journal-btn" class="mini-btn">Save Draft</button>
+                            <span id="journal-status" class="status-msg"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab-chat-market">
+                <div class="features-grid">
+                    <div class="card col-span-2">
+                        <h3>💬 Real-time Neural Chat (Sandbox)</h3>
+                        <div class="chat-sim-container">
+                            <div class="chat-header">
+                                <span class="active-badge"></span> MJ Core Interface
+                            </div>
+                            <div class="chat-messages" id="chat-messages">
+                                <div class="msg bot">Hello Human. I am MJ. Choose a mood, or ask me anything. No corporate filters here.</div>
+                            </div>
+                            <div class="chat-input-row">
+                                <input type="text" id="chat-user-input" placeholder="Type prompt (e.g., 'give me bad advice', 'how to focus')...">
+                                <button id="send-chat-btn">Send</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>💾 System Memories & Vault</h3>
+                        <p>Explore prompt logs, templates and persistent secure archives generated during runtime.</p>
+                        <ul class="memories-list">
+                            <li>📂 Doc template: High-Performance Resume.docx</li>
+                            <li>📁 Prompt: Cryptographic hashing functions</li>
+                            <li>🔑 Auth Token: MJ_SECURE_TOKEN_LOCAL</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>🛒 Extension Marketplace</h3>
+                        <p>Download certified community tools, logic modules, custom UI themes, and plugins for MJ.</p>
+                        <div class="market-item">
+                            <span>📦 System-Level Bypass Package v1.2</span>
+                            <span class="market-price">Free</span>
+                        </div>
+                        <div class="market-item">
+                            <span>🎨 Vaporwave Neon Theme</span>
+                            <span class="market-price">Owned</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab-whiteboard">
+                <div class="features-grid">
+                    <div class="card col-span-2">
+                        <h3>✏️ Sandbox Whiteboard & Code Canvas</h3>
+                        <p>Draft systems, mockups, or draw design frameworks using the quick reactive whiteboard below.</p>
+                        <div class="whiteboard-container">
+                            <div class="canvas-toolbar">
+                                <label for="canvas-color">Color:</label>
+                                <input type="color" id="canvas-color" value="#00F2FF">
+                                <label for="canvas-size">Stroke:</label>
+                                <input type="range" id="canvas-size" min="1" max="12" value="3">
+                                <button id="clear-canvas" class="mini-btn text-pink">Clear Canvas</button>
+                            </div>
+                            <canvas id="whiteboard-canvas" width="600" height="250"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>💻 Rapid Code Sandbox</h3>
+                        <p>Format quick-scripts, run client code, or structure automation blueprints.</p>
+                        <pre class="code-sim-box"><code>const mj = require('mj-core');
+mj.alignState('Focus-Mode');
+mj.executeTask('Automate boring files');</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab-sync-vault">
+                <div class="card">
+                    <h3>📲 Phone to PC Secure Sync</h3>
+                    <p>Connect your MJ Pro Android client to any laptop or tablet using clean, end-to-end local routing.</p>
+                    <div class="sync-grid">
+                        <div class="qr-placeholder">
+                            <svg viewBox="0 0 100 100" width="80" height="80" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="10" y="10" width="25" height="25" />
+                                <rect x="65" y="10" width="25" height="25" />
+                                <rect x="10" y="65" width="25" height="25" />
+                                <rect x="20" y="20" width="5" height="5" fill="currentColor" />
+                                <rect x="75" y="20" width="5" height="5" fill="currentColor" />
+                                <rect x="20" y="75" width="5" height="5" fill="currentColor" />
+                                <line x1="45" y1="15" x2="55" y2="15" />
+                                <line x1="45" y1="30" x2="45" y2="40" />
+                                <line x1="65" y1="50" x2="85" y2="50" />
+                                <line x1="50" y1="65" x2="50" y2="85" />
+                            </svg>
+                            <span style="font-size: 0.75rem; color: var(--accent);">Local Network Only</span>
+                        </div>
+                        <div class="sync-info">
+                            <p>Generate a secure ephemeral numeric handshake code to authenticate devices.</p>
+                            <button id="generate-sync-btn">Generate Sync Code</button>
+                            <div id="sync-code-output" class="sync-code-output hidden">
+                                <code>SYNC_KEY: <span id="sync-code">---- ---- ----</span></code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section with Custom Paytm Checkout option featuring UPI -->
         <section id="purchase">
-            <h2>Choose Your Access</h2>
-            <p>No public downloads. Secure 15-minute evaluation or full lifetime APK via verified license.</p>
-            <div class="card pricing-card">
-                <h3>15-Minute Sandbox Trial</h3>
-                <p>Test all Pro features instantly right in your browser with zero commitment.</p>
-                <button class="trial-btn secondary-trial" id="trial-card-btn">Activate Free 15-Min Trial</button>
-            </div>
-            <div class="card pricing-card featured">
-                <h3>Lifetime Pro License + APK</h3>
-                <p style="font-size: 1.8rem; font-weight: 800; color: var(--accent); margin: 8px 0 16px;">$29 <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: normal;">one-time payment</span></p>
-                <p>Includes secure customer dashboard, full Android APK download, personal license key, and unlimited tokens.</p>
-                <button class="buy-btn" id="buy-btn">Buy MJ Pro - $29</button>
+            <h2>Select Your Deployment Level</h2>
+            <p>No monthly subs. Fully audited downloads. Lifetime offline license keys delivered instantly.</p>
+            
+            <div class="pricing-grid">
+                <!-- Sandbox Tier -->
+                <div class="card pricing-card border-neon-cyan">
+                    <span class="badge-tier">EVAL MODE</span>
+                    <h3>Instant Browser Access</h3>
+                    <p>Play with the live modules in the sandbox environment. Completely free for exploration.</p>
+                    <div class="price-box">
+                        <span class="price">$0</span>
+                        <span class="sub-price">Forever</span>
+                    </div>
+                    <ul class="tier-features">
+                        <li>✔️ Browser Sandbox Access</li>
+                        <li>✔️ Interactive canvas tool</li>
+                        <li>❌ No offline engine support</li>
+                        <li>❌ No APK installer for mobile</li>
+                    </ul>
+                    <a href="#features-dashboard" class="btn-primary-neon font-sm" style="width:100%; margin-top:20px;">Launch Sandbox</a>
+                </div>
+
+                <!-- Pro Tier with APK -->
+                <div class="card pricing-card featured-glow border-neon-pink">
+                    <span class="badge-tier accent-bg">MOST POPULAR</span>
+                    <h3>Lifetime Pro Key + Mobile APK</h3>
+                    <p>Run full local generative neural intelligence offline on your mobile client.</p>
+                    <div class="price-box">
+                        <span class="price">$29</span>
+                        <span class="sub-price">One-time / Lifetime</span>
+                    </div>
+                    <ul class="tier-features">
+                        <li>✔️ Secure downloadable Android APK (v1.0.4)</li>
+                        <li>✔️ Personalized cryptokey activation</li>
+                        <li>✔️ Full Device-to-PC Sync Protocol</li>
+                        <li>✔️ Unlimited prompts, zero cloud bills</li>
+                    </ul>
+                    <button class="buy-btn" id="buy-btn">Get MJ Pro (Paytm/UPI/Card) - $29</button>
+                </div>
             </div>
         </section>
+
+        <!-- Dynamic Payment Gateway Drawer -->
+        <div id="payment-modal" class="payment-modal hidden">
+            <div class="payment-card">
+                <div class="payment-header">
+                    <h4>🔒 SECURE CHECKOUT</h4>
+                    <button id="close-payment" class="close-btn">&times;</button>
+                </div>
+                <div class="payment-body">
+                    <p class="summary-text">Upgrade: <strong>MJ Lifetime Pro Client + APK</strong> <br>Price: <strong>$29 (Approx ₹2,400 INR)</strong></p>
+                    
+                    <div class="payment-methods">
+                        <h5>Select Gateway:</h5>
+                        <!-- UPI payment -->
+                        <div class="method-option active" data-method="upi">
+                            <span class="method-icon">📱</span>
+                            <div>
+                                <strong>UPI / Paytm</strong>
+                                <p class="method-meta">Scan QR or enter UPI ID below</p>
+                            </div>
+                        </div>
+                        <!-- Cards payment -->
+                        <div class="method-option" data-method="card">
+                            <span class="method-icon">💳</span>
+                            <div>
+                                <strong>Credit/Debit Cards</strong>
+                                <p class="method-meta">Global Instant Authorization</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Payment Screen Container -->
+                    <div id="upi-payment-details" class="payment-details-container">
+                        <div class="upi-instructions">
+                            <p>Send precisely <strong>₹2,400 INR</strong> or <strong>$29 USD</strong> to our official verified UPI ID to claim automatic key delivery:</p>
+                            <div class="upi-copy-box">
+                                <span id="upi-id-value">khariya@fam</span>
+                                <button id="copy-upi-btn" class="mini-btn">Copy ID</button>
+                            </div>
+                            <p class="disclaimer">Paytm, PhonePe, Google Pay, or BHIM accepted. After payment, enter Transaction ID / UTR below to auto-verify.</p>
+                            
+                            <div class="verification-row">
+                                <input type="text" id="utr-input" placeholder="Enter UPI Ref No. (12-digit UTR)...">
+                                <button id="verify-payment-btn">Verify Payment</button>
+                            </div>
+                            <span id="payment-error-msg" class="payment-status"></span>
+                        </div>
+                    </div>
+
+                    <div id="card-payment-details" class="payment-details-container hidden">
+                        <div class="card-form">
+                            <input type="text" placeholder="Card Number (XXXX XXXX XXXX XXXX)" class="payment-input">
+                            <div class="card-row-split">
+                                <input type="text" placeholder="MM/YY" class="payment-input">
+                                <input type="text" placeholder="CVV" class="payment-input">
+                            </div>
+                            <button id="card-submit-btn" class="btn-primary-neon" style="width:100%; margin-top:10px;">Authorize Visa/Mastercard</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Dashboard Section (Hidden until purchased) -->
         <section id="dashboard-section" class="hidden">
-            <h2>Customer Dashboard</h2>
-            <p>Welcome, Pro User! Your secure license has been verified.</p>
-            <div class="card dashboard-card">
-                <h3>📦 MJ Pro Android APK</h3>
-                <p>Download the latest build optimized for your device architecture.</p>
-                <button id="download-apk-btn" class="trial-btn">Download MJ_Pro_v1.0.4.apk</button>
-            </div>
-            <div class="card dashboard-card">
-                <h3>🔑 Your License Key</h3>
-                <p>Enter this key inside the app upon first launch to activate offline neural weights.</p>
-                <div class="license-box">
-                    <span id="license-key-text">TOXIC-PRO-77X9-99PL-44ZQ</span>
-                    <button id="copy-key-btn" class="mini-btn">Copy Key</button>
+            <div class="glowing-border">
+                <h2>🎉 Customer Pro Dashboard</h2>
+                <p>Welcome to the Elite club. Your permanent license has been successfully generated.</p>
+                <div class="grid">
+                    <div class="card dashboard-card">
+                        <h3>📦 Download Android APK</h3>
+                        <p>Direct premium build. Complete offline neural weight pack included inside.</p>
+                        <button id="download-apk-btn" class="download-apk-btn">Download MJ_Pro_v1.0.4.apk (124 MB)</button>
+                    </div>
+                    <div class="card dashboard-card">
+                        <h3>🔑 Personal License Cryptokey</h3>
+                        <p>Paste this key when installing the APK on your mobile to unlock full model parameters.</p>
+                        <div class="license-box">
+                            <span id="license-key-text">TOXIC-PRO-77X9-99PL-44ZQ</span>
+                            <button id="copy-key-btn" class="mini-btn">Copy Key</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
+        <!-- Rules & Critical Privacy Policies for Google Play and Ad Networks -->
+        <section id="rules-privacy">
+            <h2>Rules & Transparency</h2>
+            <p>Our commitment to user safety, absolute data ownership, and professional compliance parameters.</p>
+            <div class="compliance-tabs">
+                <button class="compliance-tab active" data-comp="privacy">🔒 Privacy Policy</button>
+                <button class="compliance-tab" data-comp="terms">📋 Terms of Operation</button>
+                <button class="compliance-tab" data-comp="refund">💸 Refund Policy</button>
+            </div>
+            
+            <div class="compliance-box-content card-glass">
+                <!-- Privacy Content -->
+                <div id="comp-privacy" class="comp-text">
+                    <h4>Secure Offline Privacy Manifesto</h4>
+                    <p><strong>1. Zero Data Collection:</strong> MJ runs fully locally inside your personal sandbox browser memory or offline inside the Pro Android APK. We never view, transmit, upload, or monetize your prompts, drawings, journal entries, or audio parameters.</p>
+                    <p><strong>2. Local Hardware Focus:</strong> Encryption is maintained client-side. The user possesses full intellectual rights to all creative materials, code scripts, and literary items produced with our models.</p>
+                    <p><strong>3. Third-party SDKs:</strong> No surveillance widgets or user tracking frameworks exist. Your IP address is strictly processed transiently for verification checkouts and immediately purged.</p>
+                </div>
+                <!-- Terms Content -->
+                <div id="comp-terms" class="comp-text hidden">
+                    <h4>End User License & System Rules</h4>
+                    <p><strong>1. Acceptable Usage:</strong> MJ provides direct outputs. The user remains solely liable for creative outputs, decisions, or software built using the framework.</p>
+                    <p><strong>2. Fair Sandbox Resource Use:</strong> Unlimited text prompting is granted under local device computation, but external API syncing requires the license key.</p>
+                    <p><strong>3. No Re-packaging:</strong> Users may not re-sell modified version components of "The Toxic AI" intellectual parameters.</p>
+                </div>
+                <!-- Refund Content -->
+                <div id="comp-refund" class="comp-text hidden">
+                    <h4>Refund Policy</h4>
+                    <p><strong>100% Secure Promise:</strong> If the APK exhibits compatibility limitations with your device or if you're not fully pleased within 7 days of acquiring your Pro Key, contact our help channels with your payment reference for an instantaneous, zero-questions refund.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Highly Detailed FAQ for SEO, Google crawlers, and ad networks validation -->
         <section id="faq">
             <h2>Frequently Asked Questions</h2>
-            <div class="card">
-                <p><strong>How does the 15-minute trial work?</strong><br>Clicking start instantly provisions a live 15-minute secure session with full MJ Pro capabilities right in your browser.</p>
-                <p><strong>Where do I get the APK?</strong><br>There is no public download. After purchasing the $29 Lifetime License, you unlock access to the secure Customer Dashboard to download the APK and get your personal key.</p>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">What is "GET MJ" and how is it related to "The Toxic AI"? <span>+</span></button>
+                    <div class="faq-answer">
+                        <p>MJ is a highly specialized, local-first artificial intelligence assistant developed by The Toxic AI team. Built with custom language models and compact vector architectures, MJ resides on your own personal computer or mobile telephone, allowing lightning-fast computations, document parsing, offline drawing whiteboards, and personal journal management safely away from cloud databases.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">Where do I access the APK file download? <span>+</span></button>
+                    <div class="faq-answer">
+                        <p>To avoid security spoofing and spam distributors, we do not host a public, generic APK installer link. Upon selecting the Lifetime Pro Key tier and verifying your payment via UPI (khariya@fam) or major international cards, our automated gateway immediately opens the secure Customer Pro Dashboard on this exact page, offering direct, encrypted APK and cryptokey downloads.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">How does the interactive weather widget work? <span>+</span></button>
+                    <div class="faq-answer">
+                        <p>MJ constantly measures local conditions dynamically or provides fallback projections inside your client dashboard based on system diagnostics, so your automated tasks take local parameters into perspective during custom prompts.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">Can I use MJ offline? <span>+</span></button>
+                    <div class="faq-answer">
+                        <p>Yes. Both the integrated sandbox modules (Music Player, Journal Draft, Whiteboard Canvas) and the complete Pro Android app are designed to work without network coverage, keeping your private thoughts and production workflows localized.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">Is the UPI payment method via "khariya@fam" secure? <span>+</span></button>
+                    <div class="faq-answer">
+                        <p>Absolutely. Your payment is processed natively through UPI (Unified Payments Interface) using high-grade merchant channels. The ID <code>khariya@fam</code> routes straight to our secure accounting ledger to automate prompt code deployment on verified payment signatures.</p>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -109,7 +433,7 @@
             </svg>
             <span>THE TOXIC AI</span>
         </div>
-        <p>&copy; THE TOXIC AI. All rights reserved. Built by THE TOXIC AI.</p>
+        <p>&copy; THE TOXIC AI. All rights reserved. Web or App created by TOXIC AI.</p>
     </footer>
 
     <script src="app.js"></script>
